@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拼接</title>
+  <style>
+    .condition_add {
+      color: red;
+      font-weight: bold;
+    }
+
+    .condition_maybe {
+      color:chocolate;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="app">
+
+  </p>
+  <script>
+    const target = {
+      "rules": [{
+        "logicCode": "||",
+        "opCode": "4",
+        "isShow": "1",
+        "conditionCode": "1650423463538",
+        "value": 2,
+        "compareVariablesCode": "person",
+        "condition1": [{
+          "id": 30,
+          "conditionName": "条件",
+          "conditionCode": "1650423463538",
+          "compareVariablesCode": "person",
+          "displayAttributeCode": "rule_name",
+          "valueAttributeCode": "disabled",
+          "valueSource": 1,
+          "variableCode": "person",
+          "variableDisplayAttributeCode": "rule_name",
+          "variableValueAttributeCode": "disabled",
+          "variableSource": 2,
+          "variableType": 2,
+          "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+        }, {
+          "id": 31,
+          "conditionName": "隔壁老王",
+          "conditionCode": "1650426059956",
+          "compareVariablesCode": "8297",
+          "displayAttributeCode": null,
+          "valueAttributeCode": null,
+          "valueSource": 0,
+          "variableCode": "8297",
+          "variableDisplayAttributeCode": null,
+          "variableValueAttributeCode": null,
+          "variableSource": 1,
+          "variableType": 0,
+          "variableText": "你在哪"
+        }],
+        "condition2": [{
+          "code": "4",
+          "name": "包含全部"
+        }],
+        "condition3": [{
+          "rule_name": "sds",
+          "disabled": 2
+        }, {
+          "rule_name": "s1ds",
+          "disabled": 2
+        }, {
+          "rule_name": "s11ds",
+          "disabled": 2
+        }, {
+          "rule_name": "s111ds",
+          "disabled": 2
+        }, {
+          "rule_name": "12",
+          "disabled": 2
+        }, {
+          "rule_name": "ceshi",
+          "disabled": 2
+        }, {
+          "rule_name": "nihao1",
+          "disabled": 2
+        }, {
+          "rule_name": "2l2",
+          "disabled": 2
+        }, {
+          "rule_name": "nish1",
+          "disabled": 2
+        }, {
+          "rule_name": "2",
+          "disabled": 0
+        }, {
+          "rule_name": "3",
+          "disabled": 2
+        }, {
+          "rule_name": "s1d2s",
+          "disabled": 2
+        }, {
+          "rule_name": "s11d2s",
+          "disabled": 2
+        }, {
+          "rule_name": "s1a1d2s",
+          "disabled": 2
+        }, {
+          "rule_name": "xx",
+          "disabled": 0
+        }, {
+          "rule_name": "萧山山",
+          "disabled": 0
+        }, {
+          "rule_name": "xrd",
+          "disabled": 2
+        }, {
+          "rule_name": "世界",
+          "disabled": 2
+        }, {
+          "rule_name": "qxn",
+          "disabled": 2
+        }, {
+          "rule_name": "徐瑞东",
+          "disabled": 2
+        }, {
+          "rule_name": "xxq",
+          "disabled": 2
+        }, {
+          "rule_name": "tom",
+          "disabled": 2
+        }, {
+          "rule_name": "tom1",
+          "disabled": 2
+        }],
+        "valueSource": 1,
+        "rules": [{
+          "logicCode": "||",
+          "opCode": "4",
+          "isShow": "1",
+          "conditionCode": "1650423463538",
+          "value": 2,
+          "compareVariablesCode": "person",
+          "condition1": [{
+            "id": 30,
+            "conditionName": "条件",
+            "conditionCode": "1650423463538",
+            "compareVariablesCode": "person",
+            "displayAttributeCode": "rule_name",
+            "valueAttributeCode": "disabled",
+            "valueSource": 1,
+            "variableCode": "person",
+            "variableDisplayAttributeCode": "rule_name",
+            "variableValueAttributeCode": "disabled",
+            "variableSource": 2,
+            "variableType": 2,
+            "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+          }, {
+            "id": 31,
+            "conditionName": "隔壁老王",
+            "conditionCode": "1650426059956",
+            "compareVariablesCode": "8297",
+            "displayAttributeCode": null,
+            "valueAttributeCode": null,
+            "valueSource": 0,
+            "variableCode": "8297",
+            "variableDisplayAttributeCode": null,
+            "variableValueAttributeCode": null,
+            "variableSource": 1,
+            "variableType": 0,
+            "variableText": "你在哪"
+          }],
+          "condition2": [{
+            "code": "4",
+            "name": "包含全部"
+          }],
+          "condition3": [{
+            "rule_name": "sds",
+            "disabled": 2
+          }, {
+            "rule_name": "s1ds",
+            "disabled": 2
+          }, {
+            "rule_name": "s11ds",
+            "disabled": 2
+          }, {
+            "rule_name": "s111ds",
+            "disabled": 2
+          }, {
+            "rule_name": "12",
+            "disabled": 2
+          }, {
+            "rule_name": "ceshi",
+            "disabled": 2
+          }, {
+            "rule_name": "nihao1",
+            "disabled": 2
+          }, {
+            "rule_name": "2l2",
+            "disabled": 2
+          }, {
+            "rule_name": "nish1",
+            "disabled": 2
+          }, {
+            "rule_name": "2",
+            "disabled": 0
+          }, {
+            "rule_name": "3",
+            "disabled": 2
+          }, {
+            "rule_name": "s1d2s",
+            "disabled": 2
+          }, {
+            "rule_name": "s11d2s",
+            "disabled": 2
+          }, {
+            "rule_name": "s1a1d2s",
+            "disabled": 2
+          }, {
+            "rule_name": "xx",
+            "disabled": 0
+          }, {
+            "rule_name": "萧山山",
+            "disabled": 0
+          }, {
+            "rule_name": "xrd",
+            "disabled": 2
+          }, {
+            "rule_name": "世界",
+            "disabled": 2
+          }, {
+            "rule_name": "qxn",
+            "disabled": 2
+          }, {
+            "rule_name": "徐瑞东",
+            "disabled": 2
+          }, {
+            "rule_name": "xxq",
+            "disabled": 2
+          }, {
+            "rule_name": "tom",
+            "disabled": 2
+          }, {
+            "rule_name": "tom1",
+            "disabled": 2
+          }],
+          "valueSource": 1,
+          "rules": [{
+            "logicCode": "||",
+            "opCode": "4",
+            "isShow": "0",
+            "conditionCode": "1650423463538",
+            "value": 2,
+            "compareVariablesCode": "person",
+            "condition1": [{
+              "id": 30,
+              "conditionName": "条件",
+              "conditionCode": "1650423463538",
+              "compareVariablesCode": "person",
+              "displayAttributeCode": "rule_name",
+              "valueAttributeCode": "disabled",
+              "valueSource": 1,
+              "variableCode": "person",
+              "variableDisplayAttributeCode": "rule_name",
+              "variableValueAttributeCode": "disabled",
+              "variableSource": 2,
+              "variableType": 2,
+              "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+            }, {
+              "id": 31,
+              "conditionName": "隔壁老王",
+              "conditionCode": "1650426059956",
+              "compareVariablesCode": "8297",
+              "displayAttributeCode": null,
+              "valueAttributeCode": null,
+              "valueSource": 0,
+              "variableCode": "8297",
+              "variableDisplayAttributeCode": null,
+              "variableValueAttributeCode": null,
+              "variableSource": 1,
+              "variableType": 0,
+              "variableText": "你在哪"
+            }],
+            "condition2": [{
+              "code": "4",
+              "name": "包含全部"
+            }],
+            "condition3": [{
+              "rule_name": "sds",
+              "disabled": 2
+            }, {
+              "rule_name": "s1ds",
+              "disabled": 2
+            }, {
+              "rule_name": "s11ds",
+              "disabled": 2
+            }, {
+              "rule_name": "s111ds",
+              "disabled": 2
+            }, {
+              "rule_name": "12",
+              "disabled": 2
+            }, {
+              "rule_name": "ceshi",
+              "disabled": 2
+            }, {
+              "rule_name": "nihao1",
+              "disabled": 2
+            }, {
+              "rule_name": "2l2",
+              "disabled": 2
+            }, {
+              "rule_name": "nish1",
+              "disabled": 2
+            }, {
+              "rule_name": "2",
+              "disabled": 0
+            }, {
+              "rule_name": "3",
+              "disabled": 2
+            }, {
+              "rule_name": "s1d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "s11d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "s1a1d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "xx",
+              "disabled": 0
+            }, {
+              "rule_name": "萧山山",
+              "disabled": 0
+            }, {
+              "rule_name": "xrd",
+              "disabled": 2
+            }, {
+              "rule_name": "世界",
+              "disabled": 2
+            }, {
+              "rule_name": "qxn",
+              "disabled": 2
+            }, {
+              "rule_name": "徐瑞东",
+              "disabled": 2
+            }, {
+              "rule_name": "xxq",
+              "disabled": 2
+            }, {
+              "rule_name": "tom",
+              "disabled": 2
+            }, {
+              "rule_name": "tom1",
+              "disabled": 2
+            }],
+            "valueSource": 1
+          }, {
+            "logicCode": "||",
+            "opCode": "3",
+            "isShow": "0",
+            "conditionCode": "1650426059956",
+            "value": "11",
+            "compareVariablesCode": "8297",
+            "condition1": [{
+              "id": 30,
+              "conditionName": "条件",
+              "conditionCode": "1650423463538",
+              "compareVariablesCode": "person",
+              "displayAttributeCode": "rule_name",
+              "valueAttributeCode": "disabled",
+              "valueSource": 1,
+              "variableCode": "person",
+              "variableDisplayAttributeCode": "rule_name",
+              "variableValueAttributeCode": "disabled",
+              "variableSource": 2,
+              "variableType": 2,
+              "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+            }, {
+              "id": 31,
+              "conditionName": "隔壁老王",
+              "conditionCode": "1650426059956",
+              "compareVariablesCode": "8297",
+              "displayAttributeCode": null,
+              "valueAttributeCode": null,
+              "valueSource": 0,
+              "variableCode": "8297",
+              "variableDisplayAttributeCode": null,
+              "variableValueAttributeCode": null,
+              "variableSource": 1,
+              "variableType": 0,
+              "variableText": "你在哪"
+            }],
+            "condition2": [{
+              "code": "3",
+              "name": "小于"
+            }, {
+              "code": "1",
+              "name": "等于"
+            }],
+            "condition3": null,
+            "valueSource": 0
+          }]
+        }, {
+          "logicCode": "||",
+          "opCode": "3",
+          "isShow": "",
+          "conditionCode": "1650426059956",
+          "value": "1112",
+          "condition1": [{
+            "id": 30,
+            "conditionName": "条件",
+            "conditionCode": "1650423463538",
+            "compareVariablesCode": "person",
+            "displayAttributeCode": "rule_name",
+            "valueAttributeCode": "disabled",
+            "valueSource": 1,
+            "variableCode": "person",
+            "variableDisplayAttributeCode": "rule_name",
+            "variableValueAttributeCode": "disabled",
+            "variableSource": 2,
+            "variableType": 2,
+            "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+          }, {
+            "id": 31,
+            "conditionName": "隔壁老王",
+            "conditionCode": "1650426059956",
+            "compareVariablesCode": "8297",
+            "displayAttributeCode": null,
+            "valueAttributeCode": null,
+            "valueSource": 0,
+            "variableCode": "8297",
+            "variableDisplayAttributeCode": null,
+            "variableValueAttributeCode": null,
+            "variableSource": 1,
+            "variableType": 0,
+            "variableText": "你在哪"
+          }],
+          "compareVariablesCode": "8297",
+          "condition2": [{
+            "code": "3",
+            "name": "小于"
+          }, {
+            "code": "1",
+            "name": "等于"
+          }],
+          "condition3": null,
+          "valueSource": 0
+        }]
+      }, {
+        "condition1": [{
+          "id": 30,
+          "conditionName": "条件",
+          "conditionCode": "1650423463538",
+          "compareVariablesCode": "person",
+          "displayAttributeCode": "rule_name",
+          "valueAttributeCode": "disabled",
+          "valueSource": 1,
+          "variableCode": "person",
+          "variableDisplayAttributeCode": "rule_name",
+          "variableValueAttributeCode": "disabled",
+          "variableSource": 2,
+          "variableType": 2,
+          "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+        }, {
+          "id": 31,
+          "conditionName": "隔壁老王",
+          "conditionCode": "1650426059956",
+          "compareVariablesCode": "8297",
+          "displayAttributeCode": null,
+          "valueAttributeCode": null,
+          "valueSource": 0,
+          "variableCode": "8297",
+          "variableDisplayAttributeCode": null,
+          "variableValueAttributeCode": null,
+          "variableSource": 1,
+          "variableType": 0,
+          "variableText": "你在哪"
+        }],
+        "condition2": [{
+          "code": "4",
+          "name": "包含全部"
+        }],
+        "condition3": [{
+          "rule_name": "sds",
+          "disabled": 2
+        }, {
+          "rule_name": "s1ds",
+          "disabled": 2
+        }, {
+          "rule_name": "s11ds",
+          "disabled": 2
+        }, {
+          "rule_name": "s111ds",
+          "disabled": 2
+        }, {
+          "rule_name": "12",
+          "disabled": 2
+        }, {
+          "rule_name": "ceshi",
+          "disabled": 2
+        }, {
+          "rule_name": "nihao1",
+          "disabled": 2
+        }, {
+          "rule_name": "2l2",
+          "disabled": 2
+        }, {
+          "rule_name": "nish1",
+          "disabled": 2
+        }, {
+          "rule_name": "2",
+          "disabled": 0
+        }, {
+          "rule_name": "3",
+          "disabled": 2
+        }, {
+          "rule_name": "s1d2s",
+          "disabled": 2
+        }, {
+          "rule_name": "s11d2s",
+          "disabled": 2
+        }, {
+          "rule_name": "s1a1d2s",
+          "disabled": 2
+        }, {
+          "rule_name": "xx",
+          "disabled": 0
+        }, {
+          "rule_name": "萧山山",
+          "disabled": 0
+        }, {
+          "rule_name": "xrd",
+          "disabled": 2
+        }, {
+          "rule_name": "世界",
+          "disabled": 2
+        }, {
+          "rule_name": "qxn",
+          "disabled": 2
+        }, {
+          "rule_name": "徐瑞东",
+          "disabled": 2
+        }, {
+          "rule_name": "xxq",
+          "disabled": 2
+        }, {
+          "rule_name": "tom",
+          "disabled": 2
+        }, {
+          "rule_name": "tom1",
+          "disabled": 2
+        }],
+        "compareVariablesCode": "person",
+        "logicCode": "||",
+        "opCode": "4",
+        "isShow": "1",
+        "conditionCode": "1650423463538",
+        "value": 2,
+        "valueSource": 1,
+        "rules": [{
+          "logicCode": "||",
+          "opCode": "3",
+          "isShow": "0",
+          "conditionCode": "1650426059956",
+          "value": "5",
+          "compareVariablesCode": "8297",
+          "condition1": [{
+            "id": 30,
+            "conditionName": "条件",
+            "conditionCode": "1650423463538",
+            "compareVariablesCode": "person",
+            "displayAttributeCode": "rule_name",
+            "valueAttributeCode": "disabled",
+            "valueSource": 1,
+            "variableCode": "person",
+            "variableDisplayAttributeCode": "rule_name",
+            "variableValueAttributeCode": "disabled",
+            "variableSource": 2,
+            "variableType": 2,
+            "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+          }, {
+            "id": 31,
+            "conditionName": "隔壁老王",
+            "conditionCode": "1650426059956",
+            "compareVariablesCode": "8297",
+            "displayAttributeCode": null,
+            "valueAttributeCode": null,
+            "valueSource": 0,
+            "variableCode": "8297",
+            "variableDisplayAttributeCode": null,
+            "variableValueAttributeCode": null,
+            "variableSource": 1,
+            "variableType": 0,
+            "variableText": "你在哪"
+          }],
+          "condition2": [{
+            "code": "3",
+            "name": "小于"
+          }, {
+            "code": "1",
+            "name": "等于"
+          }],
+          "condition3": null,
+          "valueSource": 0
+        }, {
+          "logicCode": "||",
+          "opCode": "3",
+          "isShow": "1",
+          "conditionCode": "1650426059956",
+          "value": 2,
+          "condition1": [{
+            "id": 30,
+            "conditionName": "条件",
+            "conditionCode": "1650423463538",
+            "compareVariablesCode": "person",
+            "displayAttributeCode": "rule_name",
+            "valueAttributeCode": "disabled",
+            "valueSource": 1,
+            "variableCode": "person",
+            "variableDisplayAttributeCode": "rule_name",
+            "variableValueAttributeCode": "disabled",
+            "variableSource": 2,
+            "variableType": 2,
+            "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+          }, {
+            "id": 31,
+            "conditionName": "隔壁老王",
+            "conditionCode": "1650426059956",
+            "compareVariablesCode": "8297",
+            "displayAttributeCode": null,
+            "valueAttributeCode": null,
+            "valueSource": 0,
+            "variableCode": "8297",
+            "variableDisplayAttributeCode": null,
+            "variableValueAttributeCode": null,
+            "variableSource": 1,
+            "variableType": 0,
+            "variableText": "你在哪"
+          }],
+          "compareVariablesCode": "8297",
+          "condition2": [{
+            "code": "3",
+            "name": "小于"
+          }, {
+            "code": "1",
+            "name": "等于"
+          }],
+          "condition3": null,
+          "valueSource": 0,
+          "rules": [{
+            "logicCode": "||",
+            "opCode": "4",
+            "isShow": "0",
+            "conditionCode": "1650423463538",
+            "value": 2,
+            "compareVariablesCode": "person",
+            "condition1": [{
+              "id": 30,
+              "conditionName": "条件",
+              "conditionCode": "1650423463538",
+              "compareVariablesCode": "person",
+              "displayAttributeCode": "rule_name",
+              "valueAttributeCode": "disabled",
+              "valueSource": 1,
+              "variableCode": "person",
+              "variableDisplayAttributeCode": "rule_name",
+              "variableValueAttributeCode": "disabled",
+              "variableSource": 2,
+              "variableType": 2,
+              "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+            }, {
+              "id": 31,
+              "conditionName": "隔壁老王",
+              "conditionCode": "1650426059956",
+              "compareVariablesCode": "8297",
+              "displayAttributeCode": null,
+              "valueAttributeCode": null,
+              "valueSource": 0,
+              "variableCode": "8297",
+              "variableDisplayAttributeCode": null,
+              "variableValueAttributeCode": null,
+              "variableSource": 1,
+              "variableType": 0,
+              "variableText": "你在哪"
+            }],
+            "condition2": [{
+              "code": "4",
+              "name": "包含全部"
+            }],
+            "condition3": [{
+              "rule_name": "sds",
+              "disabled": 2
+            }, {
+              "rule_name": "s1ds",
+              "disabled": 2
+            }, {
+              "rule_name": "s11ds",
+              "disabled": 2
+            }, {
+              "rule_name": "s111ds",
+              "disabled": 2
+            }, {
+              "rule_name": "12",
+              "disabled": 2
+            }, {
+              "rule_name": "ceshi",
+              "disabled": 2
+            }, {
+              "rule_name": "nihao1",
+              "disabled": 2
+            }, {
+              "rule_name": "2l2",
+              "disabled": 2
+            }, {
+              "rule_name": "nish1",
+              "disabled": 2
+            }, {
+              "rule_name": "2",
+              "disabled": 0
+            }, {
+              "rule_name": "3",
+              "disabled": 2
+            }, {
+              "rule_name": "s1d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "s11d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "s1a1d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "xx",
+              "disabled": 0
+            }, {
+              "rule_name": "萧山山",
+              "disabled": 0
+            }, {
+              "rule_name": "xrd",
+              "disabled": 2
+            }, {
+              "rule_name": "世界",
+              "disabled": 2
+            }, {
+              "rule_name": "qxn",
+              "disabled": 2
+            }, {
+              "rule_name": "徐瑞东",
+              "disabled": 2
+            }, {
+              "rule_name": "xxq",
+              "disabled": 2
+            }, {
+              "rule_name": "tom",
+              "disabled": 2
+            }, {
+              "rule_name": "tom1",
+              "disabled": 2
+            }],
+            "valueSource": 1
+          }, {
+            "logicCode": "||",
+            "opCode": "3",
+            "isShow": "0",
+            "conditionCode": "1650423463538",
+            "value": "去111",
+            "compareVariablesCode": "person",
+            "condition1": [{
+              "id": 30,
+              "conditionName": "条件",
+              "conditionCode": "1650423463538",
+              "compareVariablesCode": "person",
+              "displayAttributeCode": "rule_name",
+              "valueAttributeCode": "disabled",
+              "valueSource": 1,
+              "variableCode": "person",
+              "variableDisplayAttributeCode": "rule_name",
+              "variableValueAttributeCode": "disabled",
+              "variableSource": 2,
+              "variableType": 2,
+              "variableText": "SELECT rule_name,disabled FROM th_s_rule_engine"
+            }, {
+              "id": 31,
+              "conditionName": "隔壁老王",
+              "conditionCode": "1650426059956",
+              "compareVariablesCode": "8297",
+              "displayAttributeCode": null,
+              "valueAttributeCode": null,
+              "valueSource": 0,
+              "variableCode": "8297",
+              "variableDisplayAttributeCode": null,
+              "variableValueAttributeCode": null,
+              "variableSource": 1,
+              "variableType": 0,
+              "variableText": "你在哪"
+            }],
+            "condition2": [{
+              "code": "4",
+              "name": "包含全部"
+            }],
+            "condition3": [{
+              "rule_name": "sds",
+              "disabled": 2
+            }, {
+              "rule_name": "s1ds",
+              "disabled": 2
+            }, {
+              "rule_name": "s11ds",
+              "disabled": 2
+            }, {
+              "rule_name": "s111ds",
+              "disabled": 2
+            }, {
+              "rule_name": "12",
+              "disabled": 2
+            }, {
+              "rule_name": "ceshi",
+              "disabled": 2
+            }, {
+              "rule_name": "nihao1",
+              "disabled": 2
+            }, {
+              "rule_name": "2l2",
+              "disabled": 2
+            }, {
+              "rule_name": "nish1",
+              "disabled": 2
+            }, {
+              "rule_name": "2",
+              "disabled": 0
+            }, {
+              "rule_name": "3",
+              "disabled": 2
+            }, {
+              "rule_name": "s1d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "s11d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "s1a1d2s",
+              "disabled": 2
+            }, {
+              "rule_name": "xx",
+              "disabled": 0
+            }, {
+              "rule_name": "萧山山",
+              "disabled": 0
+            }, {
+              "rule_name": "xrd",
+              "disabled": 2
+            }, {
+              "rule_name": "世界",
+              "disabled": 2
+            }, {
+              "rule_name": "qxn",
+              "disabled": 2
+            }, {
+              "rule_name": "徐瑞东",
+              "disabled": 2
+            }, {
+              "rule_name": "xxq",
+              "disabled": 2
+            }, {
+              "rule_name": "tom",
+              "disabled": 2
+            }, {
+              "rule_name": "tom1",
+              "disabled": 2
+            }],
+            "valueSource": 1
+          }]
+        }]
+      }],
+      "rulesId": null,
+      "conditionCode": "||",
+      "isShow": '1',
+      "logicCode": "&&"
+    }
+    
+    const textMap = {
+      "&&": `<span class='condition_add'> 并且 </span>`,
+      "||": `<span class='condition_maybe'> 或者 </span>`
+    }
+
+    function getCellText(code, options, props = { name: 'name', code: 'code' }){
+      // code ?? '' => 如果 code 是 null 或者 undefined 则返回个空字符串
+      if(!options || !options.length) return code ?? '';  
+      const res = options.find( op => code === op[props.code] )
+      return res?.[props.name] || (code ?? '')
+    }
+
+    function getCondition(rules){
+      const result = rules.map(rule => getText(rule))
+      return result
+    }
+
+    function getText(node){
+      let latestText
+      
+      if(node.isShow == '1'){
+        const results = getCondition(node.rules)
+        // 这里可以加一个判断是否是第一层的条件 => 来控制最外层的括号要不要
+        latestText = "(" + results.join(textMap[node.logicCode]) + ")"
+      }else{
+        const { conditionCode, opCode, value, condition1, condition2, condition3 } = node
+
+        latestText = getCellText(conditionCode, condition1, { name: 'conditionName', code: 'conditionCode' }) 
+          + getCellText(opCode, condition2)
+          + getCellText(value, condition3, { name: 'rule_name', code: 'disabled' })
+      }
+      return latestText
+    }
+
+    document.getElementById('app').innerHTML = getText(target)
+
+
+  </script>
+</body>
+
+</html>

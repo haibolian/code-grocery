@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const obj1 = {
+      f: function(){
+        console.log(this); // obj1 
+        const o = {
+          fn: ()=>{
+            console.log(this); // obj1
+          }
+        }
+        return o.fn
+      }
+    }
+
+    const obj11 = {
+      a: 22,
+      b: obj1.f()
+    }
+    
+    obj11.b()
+    
+
+    const obj2 = {
+      fn: ()=>{
+        console.log(this);
+      }
+    }
+
+    console.log('------');
+
+    const arr = [[[1,2,3,4]]]
+    const obj23 = {
+      f: function(){
+        arr.forEach(item=>{
+          console.log(this);
+          item.forEach(item2=>{
+            console.log(this);
+            item2.forEach(item3=>{
+              console.log(this);
+            })
+          })
+        })
+      }
+    }
+    obj23.f()
+
+    console.log('-----');
+    const lo = {
+      ff: function(){
+        console.log(this);
+      }
+    }
+    function ff(){
+      console.log(this);
+    }
+
+const oo1 = {
+  a: 1,
+  fn: function (){
+    function fnn(){
+      console.log(this);
+    }
+    fnn()
+  }
+}
+
+oo1.fn() // window
+ 
+    // obj2.fn()
+  </script>
+  
+</body>
+</html>
