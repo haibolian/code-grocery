@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="divTyping"></div>
+  <script>
+		var str = " 手机有手机套保护，电视有电视罩保护，眼镜有眼镜盒保护，文具有铅笔袋保护，小草有大树保护，水滴有大海保护，雅典娜有圣斗士保护，红太郎有灰太狼保护，我只想做你的保护神，无论花开花落，云卷云舒，我会一直陪在你身边!"
+		var i = 0;
+		function typing(){
+			var divTyping = document.getElementById('divTyping')
+			if(i<=str.length){
+				divTyping.innerHTML = str.slice(0,i++) + "-";
+				setTimeout("typing()",200)
+			}else{
+				divTyping.innerHTML = str;
+			}
+		}
+		typing();
+
+	</script>
+</body>
+</html>
