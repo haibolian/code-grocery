@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function add(a, b, c){
+      return a + b + c
+    }
+    console.info('add.length', add.length); // 2
+    
+    // 1. 针对 add 函数的普通柯里化
+    function curry1(func){
+      return function(a){
+        return function(b){
+          return a + b
+        }
+      }
+    }
+
+    const add1 = curry1(add)
+    console.info(add1(1)(2));
+
+    // 2. 柯里化
+    function curry2(func){
+      return function curried(...args){
+        if(args.length >= func.length) {
+          return func.apply(this, args)
+        }else{
+          return function(...args2){
+            return curried.apply(this, args.concat(args2))
+          }
+        }
+      }
+    }
+    const add2 = curry2(add)
+    console.info(add2(1)(2)(3));
+    console.info(add2(1)(2,3));
+    console.info(add2(1, 2)(3));
+    console.info(add2(1, 2, 3));
+
+    console.info('-------');
+    
+    function add3(...args){
+      function cur2(...args1){
+        args = args.concat(args1)
+        return cur2
+      }
+      cur2.toString = function(){
+        return args.reduce( (prev, next) => {
+          return prev + next
+        })
+      }
+      return cur2
+    }
+
+    console.log(add3(1)(2)(3) * 1);                 // 6
+    console.log(add3(1, 2, 3)(4) * 1);              // 10
+    console.log(add3(1)(2)(3)(4)(5) * 1);           // 15
+    console.log(add3(2, 6)(1) * 1);                 // 9
+    
+  </script>
+</body>
+</html>
