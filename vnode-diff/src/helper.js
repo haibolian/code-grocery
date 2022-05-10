@@ -22,5 +22,6 @@ export function createElement(vnode){
   if(children?.length){
     children.forEach(child => el.appendChild(createElement(child)))
   }
+  vnode.elm = el
   return el
 }
