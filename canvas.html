@@ -17,30 +17,21 @@
   </style>
 </head>
 <body>
-  <canvas id="cv" width="500" height="400"></canvas>
+  <canvas id="cv" width="500" height="500"></canvas>
   <script>
     const canvas = document.getElementById('cv')
-    const ctx = canvas.getContext('2d');
-    let offset = 0;
+    var ctx = canvas.getContext('2d');
 
-function draw() {
-  ctx.clearRect(0,0, canvas.width, canvas.height);
-  ctx.setLineDash([4, 2]);
-  ctx.lineDashOffset = -offset;
-  ctx.strokeRect(10,10, 100, 100);
-}
+// 开始圆半径 < 结束圆半径
+    const radia = ctx.createRadialGradient(78, 87, 5, 100, 100, 60);
+    radia.addColorStop(0, '#ccc')
+    radia.addColorStop(0.9, 'green')
+    radia.addColorStop(1, '#fff')
 
-function march() {
-  offset++;
-  if (offset > 16) {
-    offset = 0;
-  }
-  draw();
-  setTimeout(march, 20);
-}
+    ctx.fillStyle = radia
+    ctx.fillRect(0, 0, 500, 500)
 
-march();
-
+  // draw()
   </script>
 </body>
 </html>
