@@ -18,6 +18,7 @@ export function h(sel, data, content){
     data,
     elm,
     children,
-    text
+    text,
+    data.key
   )
 }
