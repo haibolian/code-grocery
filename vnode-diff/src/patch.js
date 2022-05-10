@@ -32,5 +32,6 @@ export default function patch(oldVnode, newVnode){
     const oldElm = oldVnode.elm
     oldElm.parentNode.insertBefore(el, oldElm)
     oldElm.remove()
+    newVnode.elm = el
   }
 }
