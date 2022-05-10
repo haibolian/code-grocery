@@ -20,7 +20,7 @@ export function createElement(vnode){
     el.innerHTML = text
   }
   if(children?.length){
-    children.map(child => el.appendChild(createElement(child)))
+    children.forEach(child => el.appendChild(createElement(child)))
   }
   return el
 }
