@@ -4,21 +4,18 @@ import patch from './patch';
 
 const container = document.getElementById('app')
 
-const demo1 = h('ul', {}, [
-  h('li', {}, '李白'),
-  h('li', {}, '苏轼'),
-  h('li', {}, '白居易'),
-  h('li', {}, '辛弃疾'),
-  h('ol', {}, [
-    h('li', {}, '醉里挑灯看剑'),
-    h('li', {}, '梦回吹角连营'),
-  ]),
+const demo1 = h('ul', { key: 'ul' }, [
+  h('li', { key: 'libai' }, '李白'),
+  h('li', { key: 'sushi' }, '苏轼'),
+  h('li', { key: 'baijuyi' }, '白居易'),
+  h('li', { key: 'xinqiji' }, '辛弃疾')
 ])
 
-const demo2 = h('ul', {}, [
-  h('li', {}, '李白'),
-  h('li', {}, '苏轼'),
-  h('li', {}, '白居易'),
+const demo2 = h('ul', { key: 'ul' }, [
+  h('li', { key: 'libai' }, '李白0'),
+  h('li', { key: 'sushi' }, '苏轼1'),
+  h('li', { key: 'baijuyi' }, '白居易2'),
+  h('li', { key: 'xinqiji' }, '辛弃疾3'),
 ])
 
 patch(container, demo1)
