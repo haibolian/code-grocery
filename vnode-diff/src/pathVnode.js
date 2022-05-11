@@ -1,5 +1,4 @@
 import { createElement, isSameNode } from "./helper"
-import patch from "./patch"
 
 const isText = vnode => typeof vnode.text == 'string' && (!vnode.children || !vnode.children.length)
 // ① 如果新节点的 content 是 text，则直接 elm.innerHTML = content
@@ -37,15 +36,21 @@ function diff(oldVnode, newVnode){
   newStartIdx = 0,
   newEndIdx = newVnode.children.length - 1
   
-  
+  const keyMap = {}
+
+  oldChildren.forEach((child, index) => keyMap[child.key] = index)
   
   while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
     const oldStartVnode = oldChildren[oldStartIdx],
       oldEndVnode = oldChildren[oldEndIdx],
       newStartVnode = newChildren[newStartIdx],
       newEndVnode = newChildren[newEndIdx]
-
-    if(isSameNode(oldStartVnode, newStartVnode)) {
+    
+    if(!oldStartVnode) {
+      oldStartIdx++
+    }else if(!oldEndVnode){
+      oldEndIdx--
+    }else if(isSameNode(oldStartVnode, newStartVnode)) {
       patchVnode(oldChildren[oldStartIdx++], newChildren[newStartIdx++])
 
     }else if(isSameNode(oldEndVnode, newEndVnode)) {
@@ -55,25 +60,44 @@ function diff(oldVnode, newVnode){
       const elm = oldStartVnode.elm
       oldVnode.elm.insertBefore(elm, oldEndVnode.elm.nextSibiling)
       newEndVnode.elm = elm
-      patchVnode(oldChildren[oldStartIdx++ ], newChildren[newEndIdx--])
+      patchVnode(oldChildren[oldStartIdx], newChildren[newEndIdx--])
+
+      // 四种都没命中的情况下，可能会将 children 中的某些项置为 undefined，此时要避开
+      while (!oldChildren[++oldStartIdx] && oldStartIdx <= oldEndIdx) {
+        oldStartIdx++
+      }
 
     }else if(isSameNode(oldEndVnode, newStartVnode)) {
       const elm = oldEndVnode.elm
       oldVnode.elm.insertBefore(elm, oldStartVnode.elm)
       newStartVnode.elm = elm
-      patchVnode(oldChildren[oldEndIdx--], newChildren[newStartIdx++])
+      patchVnode(oldChildren[oldEndIdx], newChildren[newStartIdx++])
+      // 四种都没命中的情况下，可能会将 children 中的某些项置为 undefined，此时要避开
+      while (!oldChildren[--oldEndIdx] && oldEndIdx >= oldStartIdx) {
+        oldEndIdx--
+      }
 
     }else {
-      const targetVnode = oldChildren.find(oldChild => oldChild.key === newStartVnode.key)
-      if(targetVnode) {
-        
+      const targetIdx = keyMap[newStartVnode.key]
+      if(typeof targetIdx === 'number') {
+        patchVnode(oldChildren[targetIdx], newStartVnode)
+        oldVnode.elm.insertBefore(oldChildren[targetIdx].elm, oldStartVnode.elm)
+        oldChildren[targetIdx] = undefined
+      }else{
+        oldVnode.elm.insertBefore(createElement(newStartVnode), oldStartVnode.elm)
       }
+      newStartIdx++
     }
   }
   // 跳出 while 循环之后，if newChildren 的 两端 index 之前有内容，则视为新增的元素
   // if that has content between oldChildren's, that is delete element
-  if(newStartIdx <= newEndIdx) {
-
+  if(oldStartIdx <= oldEndIdx && newStartIdx > newEndIdx) {
+    const deleteVnodes = oldChildren.filter((child, index) => child && index >= oldStartIdx && index <= oldEndIdx)
+    deleteVnodes.forEach(vnode => vnode.elm.remove())
+  }
+  if(newStartIdx <= newEndIdx && oldStartIdx > oldEndIdx) {
+    const addVnodes = newChildren.filter((child, index) => child && index >= newStartIdx && index <= newEndIdx)
+    addVnodes.forEach(vnode => oldVnode.elm.appendChild(createElement(vnode)))
   }
    
 }
