@@ -36,23 +36,44 @@ function diff(oldVnode, newVnode){
   oldEndIdx = oldVnode.children.length - 1,
   newStartIdx = 0,
   newEndIdx = newVnode.children.length - 1
-
+  
+  
+  
   while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
-    if(isSameNode(oldChildren[oldStartIdx], newChildren[newStartIdx])) {
-      patch(oldChildren[oldStartIdx++], newChildren[newStartIdx++])
+    const oldStartVnode = oldChildren[oldStartIdx],
+      oldEndVnode = oldChildren[oldEndIdx],
+      newStartVnode = newChildren[newStartIdx],
+      newEndVnode = newChildren[newEndIdx]
 
-    }else if(isSameNode(oldChildren[oldEndIdx], newChildren[newEndIdx])) {
-      patch(oldChildren[oldEndIdx--], newChildren[newEndIdx--])
+    if(isSameNode(oldStartVnode, newStartVnode)) {
+      patchVnode(oldChildren[oldStartIdx++], newChildren[newStartIdx++])
 
-    }else if(isSameNode(oldChildren[oldStartIdx], newChildren[newEndIdx])) {
-      // patch(oldChildren[oldStartIdx], newChildren[newEndIdx--])
+    }else if(isSameNode(oldEndVnode, newEndVnode)) {
+      patchVnode(oldChildren[oldEndIdx--], newChildren[newEndIdx--])
 
+    }else if(isSameNode(oldStartVnode, newEndVnode)) {
+      const elm = oldStartVnode.elm
+      oldVnode.elm.insertBefore(elm, oldEndVnode.elm.nextSibiling)
+      newEndVnode.elm = elm
+      patchVnode(oldChildren[oldStartIdx++ ], newChildren[newEndIdx--])
 
-    }else if(isSameNode(oldChildren[oldEndIdx], newChildren[newStartIdx])) {
+    }else if(isSameNode(oldEndVnode, newStartVnode)) {
+      const elm = oldEndVnode.elm
+      oldVnode.elm.insertBefore(elm, oldStartVnode.elm)
+      newStartVnode.elm = elm
+      patchVnode(oldChildren[oldEndIdx--], newChildren[newStartIdx++])
 
+    }else {
+      const targetVnode = oldChildren.find(oldChild => oldChild.key === newStartVnode.key)
+      if(targetVnode) {
+        
+      }
     }
+  }
+  // 跳出 while 循环之后，if newChildren 的 两端 index 之前有内容，则视为新增的元素
+  // if that has content between oldChildren's, that is delete element
+  if(newStartIdx <= newEndIdx) {
 
-    
   }
    
 }

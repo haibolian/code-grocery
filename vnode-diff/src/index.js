@@ -5,17 +5,20 @@ import patch from './patch';
 const container = document.getElementById('app')
 
 const demo1 = h('ul', { key: 'ul' }, [
-  h('li', { key: 'libai' }, '李白'),
-  h('li', { key: 'sushi' }, '苏轼'),
-  h('li', { key: 'baijuyi' }, '白居易'),
-  h('li', { key: 'xinqiji' }, '辛弃疾')
+  h('li', { key: 'A' }, 'A'),
+  h('li', { key: 'B' }, 'B'),
+  // h('li', { key: 'Q' }, 'Q'),
+  h('li', { key: 'C' }, 'C'),
+  h('li', { key: 'D' }, 'D'),
 ])
 
 const demo2 = h('ul', { key: 'ul' }, [
-  h('li', { key: 'libai' }, '李白0'),
-  h('li', { key: 'sushi' }, '苏轼1'),
-  h('li', { key: 'baijuyi' }, '白居易2'),
-  h('li', { key: 'xinqiji' }, '辛弃疾3'),
+  h('li', { key: 'Q' }, 'Q5'),
+  h('li', { key: 'P' }, 'P5'),
+  h('li', { key: 'D' }, 'D3'),
+  h('li', { key: 'C' }, 'C2'),
+  h('li', { key: 'A' }, 'A0'),
+  h('li', { key: 'B' }, 'B1'),
 ])
 
 patch(container, demo1)
