@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="eee()">button</button>
+  <script>
+  // debounce
+  
+  // function debounce(fn, time, immediate = true){
+  //   let timer = null
+  //   return function (){
+  //     if(timer) clearTimeout(timer)
+  //     if(!timer && immediate) fn.call(this, ...arguments)
+  //     timer = setTimeout(() => {
+  //       !immediate && fn.call(this, ...arguments)
+  //       timer = null
+  //     }, time);
+  //   }
+  // }
+
+  // function fun(){
+  //   console.log('1111');
+  // }
+
+  // const eee = debounce(fun, 1000)
+
+  // setInterval(() => {
+  //   eee()
+  // }, 2000);
+
+  // throttle 
+
+  function throttle(fn, time){
+    let prev = 0
+    return function(){
+      let now = Date.now()
+      if ( now - prev > time) {
+        fn()
+        prev = now
+      }      
+    }
+  }
+
+  const fn = function(){
+    console.log('info');
+  }
+
+  const t = throttle(fn, 1000)
+
+  setInterval(() => {
+    t()
+  }, 100);
+  </script>
+</body>
+</html>
