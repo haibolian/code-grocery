@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const rules = {"rules":[{"variableLength":1,"step":"常量","constantValue":"a1","isShow":"0","calculationParamCode":"add","calculationCode":null,"variableCodeArr":[],"outParamCode":null,"variableCode":null},{"variableLength":0,"step":"常量","constantValue":"a2","isShow":"0","calculationParamCode":"added","calculationCode":null,"variableCodeArr":[],"outParamCode":null,"variableCode":null},{"name":"","opCode":"","isShow":"0","calculationCode":null,"step":"变量","variableLength":0,"value":"","calculationParamCode":"added","constantValue":null,"variableCodeArr":["kuansql","id"],"variableCode":"kuansql","outParamCode":"id"},{"name":"","opCode":"","isShow":"0","calculationCode":"*","step":"公式","variableLength":0,"value":"","calculationParamCode":"added","constantValue":null,"variableCodeArr":[],"variableCode":null,"outParamCode":null,"rules":[{"variableLength":1,"step":"常量","constantValue":"b1","isShow":"0","calculationParamCode":"multi1","calculationCode":null,"variableCodeArr":[],"outParamCode":null,"variableCode":null},{"variableLength":0,"step":"变量","constantValue":null,"isShow":"0","calculationParamCode":"multl2","calculationCode":null,"variableCodeArr":["gaosql","id"],"outParamCode":"id","variableCode":"gaosql"}]}],"calculationCode":"+","calculateCode":"cvq","calculateName":"dv"}
+
+    const operation = ['+', '-', '*', '/']
+    const otherOperationMap = {
+      max: '最大值',
+      min: '最小值',
+      fixedValue: '固定值'
+    }
+
+    function getOperands(rules) {
+      const valueArr = rules.map(rule => {
+        if (rule.step === '常量') return rule.constantValue
+        if (rule.step === '变量') return rule.variableCodeArr
+        if (rule.step === '公式') return '(' + getText(rule) + ')'
+      })
+      return valueArr
+    }
+
+    function getText(rule) {
+      const { calculationCode } = rule
+      const operands = getOperands(rule.rules)
+      return operation.includes(calculationCode) ?
+        operands.join(calculationCode)
+        :
+        otherOperationMap[calculationCode] + ': ' + operands
+    }
+
+    console.log(getText(rules));
+
+  </script>
+
+</body>
+
+</html>
