@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. 给定一个整数num和一个数字k，求解一个连续递增数列，使得长度为k的数列之和为num，存在该数列时输出数列，不存在时输出-1
+    // 例如：
+    // 输入 525 6
+    // 输出 85 86 87 88 89 90
+    // 输入 1 3
+    // 输出 -1
+
+    // function fn(num, k) {
+    //   for (let i = 0; i < num; i++) {
+    //     const arr = getArr(i, k)
+    //     const total = arr.reduce((prev, next) => {
+    //       return prev + next
+    //     })
+    //     if (total === num) {
+    //       return arr
+    //     }
+    //   }
+    //   return -1
+    // }
+
+    // function getArr(i, k) {
+    //   const arr = []
+    //   for (let j = 0; j < k; j++) {
+    //     arr.push(i + j)
+    //   }
+    //   return arr
+    // }
+    // 2. 给一个只包含大写字母的字符串，（字符串长度大于0），和一个数字k，
+    // 记录连续的相同字符的出现次数，并按出现次数排序，输出排第k位的字母的出现次数，不存在时输出-1（如果一个字母出现多次则只保留最高次数的记录，如果几个字母出现次数相同则按原字符串的出现顺序排序）
+    // 输入 AAAHHHHBHHHDDCCC
+    //         3
+    // 输出 3
+    // 分析：最终记录结果应为 { H：4次，A：3次，H：3次（忽略），C：3次，D：2次，B：1次}，排第三位的应该是C：3次，因此输出3
+    // function fn(str, idx) {
+    //   const arrmap = new Map()
+    //   const arr = str.split('')
+    //   arr.reduce((prev, cur, index, arr) => {
+    //     if(!arrmap.has(cur)) {
+    //       arrmap.set(cur, {
+    //         lastMax: 1,
+    //         max: 1
+    //       })
+    //     }
+    //     if(prev === cur) {
+    //       arrmap.get(cur).max++
+    //       if(index === arr.length - 1) arrmap.get(cur).lastMax = arrmap.get(cur).max
+    //     }else if(prev) {
+    //       if(arrmap.get(prev).lastMax < arrmap.get(prev).max){
+    //         arrmap.get(prev).lastMax = arrmap.get(prev).max
+    //       }
+    //       arrmap.get(prev).max = 1
+    //     }
+    //     return cur
+    //   },null)
+    //   // console.log(arrmap)
+
+    //   let res = []
+    //   arrmap.forEach((value, key) => {
+    //     res.push({
+    //       key,
+    //       index: value.lastMax
+    //     })
+    //   })
+
+    //   res = res.sort((a,b) => {
+    //     return b.index - a.index
+    //   })
+
+    //   return res[idx - 1].index
+    // }
+
+
+    // let str = 'AAAHHHHBHHHDDCCC'
+    // const idx = 3
+    // console.log(fn(str, idx))
+
+    // 3. 给一个纯数字字符串，和一个数字k，求该字符串删掉k个数字后组成数字的最小值
+    //   输入：2615371
+    //   4
+    //   输出：131
+    //   分析：令‘2635131’整个字符串中删掉四个数，保留的结果最小，即删掉2，6，5，7后剩余131是最小的
+  
+    function fn (num, k){
+      
+    }
+
+    fn(2615371, 4)
+
+
+  </script>
+</body>
+</html>
