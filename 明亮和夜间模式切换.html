@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      height: calc(100vh);
+    }
+    /* 第一种方式： */
+    /* html {
+      background-color: #fff;
+      filter: invert(1) hue-rotate(180deg);
+    }
+    img {
+      filter: invert(1) hue-rotate(180deg);
+    } */
+
+    /* 第二种方式 */
+    :root {
+      --mode: unkown;
+    }
+    [data-mode="dark"] {
+      --mode: dark;
+      --t-color: #fff;
+      --bg-color: #000;      
+    }
+    [data-mode="light"] {
+      --mode: light;
+      --t-color: #000;
+      --bg-color: #fff;
+    }
+    /* @media (prefers-color-scheme: dark) {
+      :root {
+        --mode: dark;
+        --t-color: #fff;
+        --bg-color: #000;
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --mode: light;
+        --t-color: #000;
+        --bg-color: #fff;
+      }
+    } */
+
+    body {
+      color: var(--t-color);
+      background-color: var(--bg-color);
+    }
+    
+    
+  </style>
+</head>
+<body>
+  <button onclick="toggleMode()">切换模式</button>
+  <div class="box">
+    <h2>一个标题</h2>
+    <p>一段文字一段文字一段文字一段文字一段文字一段文字一段文字一段文字一段文字一段文字一段文字一段文字</p>
+    <p>一段文字一段文字一段文字一段文字一段文字一段文字一段文字一段</p>
+    <h2>另一个标题</h2>
+    <p>另一段文字另一段文字另一段文字另一段文字另一段文字另一</p>
+    <p>另一段文字另一段文字另一段文字另一段文字另一段文字另一另一段文字另一段文字另一段文字另一段文字另一段文字另一</p>
+    <h2>一张图片</h2>
+    <img src="https://dogefs.s3.ladydaily.com/~/source/wallhaven/small/e7/e7pwdw.jpg" alt="不好意思图片没了">
+  </div>
+  
+  <div>
+    
+  </div>
+  <script>
+    let systemMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-mode', systemMode);
+    function toggleMode(){
+      systemMode = systemMode == 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-mode', systemMode);
+    }
+  </script>
+</body>
+</html>
