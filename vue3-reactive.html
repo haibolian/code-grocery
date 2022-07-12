@@ -3,23 +3,37 @@
   const obj = {
     a: 1,
     b: 2,
-    c: 3
+    c: {
+      d: {
+        e: 1
+      }
+    }
   }
   
-  let bucket = []
+  let bucket = new WeakMap()
   let effectFn = null
   const proxy = new Proxy(obj, {
     get(target, propKey, receiver) {
-      bucket.push(effectFn)
+      let depMap = bucket.get(target)
+      if(!depMap){
+        bucket.set(target, depMap = new Map())
+      }
+      let deps = depMap.get(propKey);
+      if(!deps) depMap.set(propKey, deps = new Set());
+      effectFn && deps.add(effectFn)
       return target[propKey]
     },
-    set(target, propKey, value, receiver) {
-      target[propKey] = value
-      bucket.forEach(fn => fn())
+    set(target, key, value, receiver) {
+      target[key] = value
+      const depsMap = bucket.get(target)
+      if(!depsMap) return
+      const effects = depsMap.get(key);
+      effects?.forEach(effect => {
+        console.log(typeof effect); 
+        effect()
+      })
     }
   })
-
-
 
   function effect(fn) {
     effectFn = fn
@@ -33,7 +47,6 @@
 
   effect(fn)
 
-  proxy.a = 3
-
+  proxy.a = 5
 
 </script>
