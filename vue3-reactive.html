@@ -3,50 +3,55 @@
   const obj = {
     a: 1,
     b: 2,
-    c: {
-      d: {
-        e: 1
-      }
-    }
   }
   
   let bucket = new WeakMap()
-  let effectFn = null
+  let activeEffect = null
   const proxy = new Proxy(obj, {
     get(target, propKey, receiver) {
-      let depMap = bucket.get(target)
-      if(!depMap){
-        bucket.set(target, depMap = new Map())
-      }
-      let deps = depMap.get(propKey);
-      if(!deps) depMap.set(propKey, deps = new Set());
-      effectFn && deps.add(effectFn)
+      track(target, propKey);
       return target[propKey]
     },
     set(target, key, value, receiver) {
       target[key] = value
-      const depsMap = bucket.get(target)
-      if(!depsMap) return
-      const effects = depsMap.get(key);
-      effects?.forEach(effect => {
-        console.log(typeof effect); 
-        effect()
-      })
+      trigger(target, key)
     }
   })
 
+  const track = (target, propKey) => {
+    let depMap = bucket.get(target)
+    if(!depMap){
+      bucket.set(target, depMap = new Map())
+    }
+    let deps = depMap.get(propKey);
+    if(!deps) depMap.set(propKey, deps = new Set());
+    activeEffect && deps.add(activeEffect)
+  }
+
+  const trigger = (target, key) => {
+    const depsMap = bucket.get(target)
+    if(!depsMap) return
+    const effects = depsMap.get(key);
+    effects?.forEach(effect => {
+      effect()
+    })
+  }
+
   function effect(fn) {
-    effectFn = fn
+    activeEffect = fn
     fn()
-    effectFn = null
+    activeEffect = null
   }
 
   const fn = () => {
-    console.log('更新', proxy.a)
+    console.log('更新a', proxy.a)
+    console.log('更新b', proxy.b)
   }
 
   effect(fn)
 
-  proxy.a = 5
+  setTimeout(() => {
+    proxy.a = 23
+  }, 1000);
 
 </script>
