@@ -1,0 +1,31 @@
+
+<style>
+  #editor {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #000;
+  }
+</style>
+<body>
+  <label>
+  <div contenteditable id="editor" onblur="blur12(event)">
+    
+    </div>
+  </label>
+  
+  <script>
+    function blur12 (e) {
+      const sel = getSelection();
+      sel.deleteFromDocument(sel.baseNode)
+      const range = sel.getRangeAt(0);
+      const span = document.createElement('span');
+      span.textContent = '🤣';
+      range.insertNode(span);
+      range.setStartAfter(span);
+      range.setEndAfter(span);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      e.target.focus()
+    }
+  </script>
+</body>
