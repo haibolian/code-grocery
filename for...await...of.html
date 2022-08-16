@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const gen = (time) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(time)
+        }, time)
+      })
+    }
+
+    // 异步递归
+    const arr = [gen(2000), gen(1000), gen(3000)]
+
+    arr.forEach(async item => {
+      const time = await item
+      console.log('forEach', time);
+    })
+    // 因为 forEach 是同步的，所以，该循环早就结束了，但各个函数自己里面还会等待，谁先完成谁就打印，所以，最后输出的顺序是 1000 2000 3000
+    
+    // 使用 for await of
+    const fn = async () => {
+      const arr2 = [gen(2000), gen(1000), gen(3000)]
+      for await (const time of arr2) {
+        console.log('fn:', time); 
+      }
+    }
+
+    fn() // 2000, 1000, 3000
+    
+  </script>
+</body>
+</html>
