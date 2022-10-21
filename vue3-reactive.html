@@ -1,8 +1,11 @@
+<body>
+
+</body>
 <script>
 
   const obj = {
-    a: 1,
-    b: 2,
+    ok: true,
+    text: 'text'
   }
   
   let bucket = new WeakMap()
@@ -40,18 +43,19 @@
   function effect(fn) {
     activeEffect = fn
     fn()
-    activeEffect = null
+
   }
 
   const fn = () => {
-    console.log('更新a', proxy.a)
-    console.log('更新b', proxy.b)
+    document.body.innerHTML = obj.ok ? obj.text : 'not'
   }
 
   effect(fn)
 
+  proxy.ok = false
+
   setTimeout(() => {
-    proxy.a = 23
+
   }, 1000);
 
 </script>

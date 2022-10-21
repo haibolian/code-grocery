@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img
+      class="lazy-loaded"
+      src=""
+      data-src="./images/1.jpg"
+      style="width: 100vh; height: 1000px"
+      alt=""
+    />
+    <img
+      class="lazy-loaded"
+      src=""
+      data-src="./images/2.jpg"
+      style="width: 100vh; height: 1000px"
+      alt=""
+    />
+    <img
+      class="lazy-loaded"
+      src=""
+      data-src="./images/3.jpg"
+      style="width: 100vh; height: 1000px"
+      alt=""
+    />
+    <img
+      class="lazy-loaded"
+      src=""
+      data-src="./images/4.jpg"
+      style="width: 100vh; height: 1000px"
+      alt=""
+    />
+  </body>
+
+  <script>
+    function query(selector) {
+      return Array.from(document.querySelectorAll(selector))
+    }
+
+    var observer = new IntersectionObserver(function (changes) {
+      console.log(changes)
+      changes.forEach(function (change) {
+        if (!change.isIntersecting) return
+        var img = change.target
+        img.src = img.dataset.src
+      })
+    })
+
+    query(".lazy-loaded").forEach(function (item) {
+      observer.observe(item)
+    })
+  </script>
+</html>
